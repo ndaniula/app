@@ -1,5 +1,14 @@
 {
-  "name": "app",
+  "name": "onguard",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "3.5",
+    "bootstrap": "3",
+    "flatpickr": "^4.5.1",
+    "hover.css": "^2.3.2",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  }
 }

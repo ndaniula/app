@@ -1,0 +1,26 @@
+ <div class="modal fade" tabindex="-1" role="dialog" id="my-modal">
+ <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Event</h4>
+        </div>
+        <div class="modal-body form-modal">
+          <%= simple_form_for @event, url: event_path, method: :patch do |f| %>
+            <%= f.input :name %>
+            <label>Event starts:</label>
+        <input name="start_date" class="flatpickr flatpickr-input form-control" placeholder="date" id= "start-day" data-dateFormat="l, F j, Y" value="<%= @event.start_date %> ">
+        <input name="start_time" class="flatpickr form-control" placeholder="time" id="start-time" value="<%= @event.start_date %> " >
+                </div>
+       <div class="col-xs-6 event-time-2">
+       <label>Event ends:</label>
+       <input name="end_date" class="flatpickr flatpickr-input form-control" placeholder="date"id= "end-day" data-dateFormat="l, F j, Y" value="<%= @event.end_date %> ">
+       <input name="end_time" class="flatpickr form-control" placeholder="time" id="end-time" value="<%= @event.end_date %> ">
+            <%= f.input :start_date %>
+            <%= f.input :end_date %>
+            <%= f.input :description %>
+            <%= f.input :location %>
+            <%= f.input :active, as: :boolean %>
+            <%= f.submit "Update Event", class: "btn btn-primary" %>
+          <% end %>
+          </div>
+          <div class="modal-footer"></div>

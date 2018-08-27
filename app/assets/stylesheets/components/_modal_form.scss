@@ -1,0 +1,45 @@
+.modal.in .modal-dialog {
+  margin: 0;
+
+}
+
+.modal {
+  left: -1px;
+  top: -1px;
+}
+
+.header-text {
+  display: flex;
+}
+
+.modal-content {
+  width: 416px;
+
+}
+
+.modal-title {
+
+  text-align: center;
+  margin-bottom: 15px;
+  color: white;
+  font-weight: lighter;
+
+
+}
+.modal-header {
+  background-color: #1d97c1;
+  border: none;
+  height: 60px;
+
+}
+
+.modal-body {
+padding: 10px;
+}
+
+.form-control {
+  font-size: 16px;
+  border-radius: 10px;
+  font-weight: lighter;
+
+}

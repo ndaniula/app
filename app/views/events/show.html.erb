@@ -1,0 +1,247 @@
+<div class="banner-event">
+  <% if !@map %>
+         <img src="https://maps.googleapis.com/maps/api/staticmap?&zoom=13&size=600x310&maptype=roadmap&markers=color:blue%7Clabel:S%7C<%= @event.latitude %>,<%= @event.longitude %>&key=<%= ENV['GOOGLE_STATIC_MAP_KEY'] %>" class="show-map">
+    <div class="location-event-show">
+      <p>Location: <%= @event.location %></p>
+    </div
+  <% else %>
+     <img src="https://maps.googleapis.com/maps/api/staticmap?&zoom=13&size=600x310&maptype=roadmap&markers=color:blue%7Clabel:S%7C<%= @map[0] %>,<%= @map[1] %>&key=<%= ENV['GOOGLE_STATIC_MAP_KEY'] %>" class="show-map">
+    <div class="location-event-show">
+      <% if @address %>
+          <p>Location: <%= @address if @address %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+
+
+<div class="event-show-container">
+  <div class="event-details-box">
+    <div class="top-event-container">
+      <div class="row">
+        <div class="col-xs-12" >
+          <div class="event-show-name"><h4><%= @event.name %></h4> <span class="event-status">
+            <p>Status: <%= @event.status %></p>
+             </span>
+          </div>
+          <div class="event-dates-container">
+            <div class="event-dates">
+              <p class="time"><%= @event.start_date.strftime("%H:%M") %></p>
+              <p class="date"><%= @event.start_date.strftime("%d/%m/%Y") %></p>
+              <p class="event-details">Event starts</p>
+            </div>
+            <div class="event-dates">
+              <p class="time"><%= @event.end_date.strftime("%H:%M") %></p>
+              <p class="date"><%= @event.end_date.strftime("%d/%m/%Y") %></p>
+              <p class="event-details">Event ends</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-8">
+        <div class="event-line-in-box"></div>
+        <div class="event-show-description">
+          <p><%= @event.description %></p>
+        </div>
+         <div class="event-line-in-box"></div>
+      </div>
+        <div class="emergency-contact-event">
+         <p>Emergency Contact: <%= @event.emergency_contacts.pluck(:first_name).join(", ") %></p>
+        </div>
+
+
+    </div>
+     <!--  <div class="col-xs-12" > -->
+        <div class="links-from-event-show-page">
+          <button type="button" class="btn btn-standard big" data-toggle="modal" data-target="#myModal">Update Event</button>
+          <%= link_to "Delete event", event_path(@event.slug),
+            method: :delete,
+            data: { confirm: "Are you sure?" }, class: "btn-standard big" %>
+
+        </div>
+     <!--  </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="event-line-in-box"></div>
+  <p class="event-log-title">Event log</p>
+  <ul class="inbox">
+    <% @event_logs.each do |event_log| %>
+    <li class="message">
+      <div class="message-date">
+        <p><strong>Date Received</strong></p>
+        <p><%= event_log.created_at.strftime("%b %e, %l:%M %p") %></p>
+      </div>
+      <div class="message-body">
+
+
+
+        <% if event_log.description[0...16] == "https://scontent" %>
+          <img src="<%= event_log.description %>" width="190px" >
+        <% elsif event_log.description.include?("bing") && event_log.description.include?("facebook") %>
+       <% latlong =URI.unescape(event_log.description).split(/where1=(.*?)&FORM=/)[1].split("%2C+")  %>
+         <img src="https://maps.googleapis.com/maps/api/staticmap?&zoom=13&size=600x310&maptype=roadmap&markers=color:blue%7Clabel:S%7C<%= latlong[0] %>,<%= latlong[1] %>&key=<%= ENV['GOOGLE_STATIC_MAP_KEY'] %>" class="show-map">
+         <% else  %>
+         <p><%= event_log.description %></p>
+         <% end %>
+
+
+      </div>
+        </p>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+
+  <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="header-text">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close" class="closing-button">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+               <h4 class="modal-title">Update the Event</h4>
+          </div>
+      </div>
+        <div class="modal-body">
+          <div class="event-form-container">
+            <div class="col-xs-12">
+              <%= simple_form_for @event, url: event_path(@event.slug), method: :patch do |f| %>
+              <div class="form-input">
+                <%= f.input :name, :input_html => {:value => @event.name} %>
+
+                <div class="event-dates-container">
+                  <div class="col-xs-6 event-time-1">
+                    <label>Event starts:</label>
+                    <input name="start_date" class="flatpickr flatpickr-input form-control" placeholder="date" id= "start-day" data-dateFormat="l, F j, Y" value="<%= @event.start_date %>">
+                    <input name="start_time" class="flatpickr form-control" placeholder="time" id="start-time" value="<%= @event.start_date %>" >
+                  </div>
+                  <div class="col-xs-6 event-time-2">
+                   <label>Event ends:</label>
+                   <input name="end_date" class="flatpickr flatpickr-input form-control" placeholder="date"id= "end-day" data-dateFormat="l, F j, Y" value="<%= @event.end_date %> ">
+                   <input name="end_time" class="flatpickr form-control" placeholder="time" id="end-time" value="<%= @event.end_date %>">
+                 </div>
+               </div>
+               <%= f.input :description, :input_html => {:value => @event.description} %>
+               <label> Location: </label>
+               <%= render 'layouts/autocomplete', event_location: @event.location %>
+
+               <%= f.input :active, as: :boolean %>
+
+              </div>
+                <div class="col-xs-12"><%= f.submit "Update Event", class: "btn btn-standard big" %>
+                </div>
+             <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+  function initMaps() {
+    var lat = <%= @event.latitude ||  "-33.8688" %>;
+    var long = <%= @event.longitude ||  "151.2195" %>;
+    var map = new google.maps.Map(document.getElementById('mymap'), {
+      center: {lat: lat, lng: long},
+      zoom: 13
+    });
+    // var mapShow = new google.maps.Map(document.getElementById('my-map'), {
+    //   center: {lat: lat, lng: long},
+    //   zoom: 13
+    // });
+    var card = document.getElementById('pac-card');
+    var input = document.getElementById('pac-input');
+    var types = document.getElementById('type-selector');
+    // console.log(types)
+    var strictBounds = document.getElementById('strict-bounds-selector');
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+    var autocomplete = new google.maps.places.Autocomplete(input);
+        // Bind the map's bounds (viewport) property to the autocomplete object,
+        // so that the autocomplete requests use the current map bounds for the
+        // bounds option in the request.
+        autocomplete.bindTo('bounds', map);
+        // Set the data fields to return when the user selects a place.
+        autocomplete.setFields(
+          ['address_components', 'geometry', 'icon', 'name']);
+        var infowindow = new google.maps.InfoWindow();
+        var infowindowContent = document.getElementById('infowindow-content');
+        infowindow.setContent(infowindowContent);
+        var marker = new google.maps.Marker({
+          map: map,
+          anchorPoint: new google.maps.Point(0, -29)
+        });
+        autocomplete.addListener('place_changed', function() {
+          infowindow.close();
+          marker.setVisible(false);
+          var place = autocomplete.getPlace();
+          if (!place.geometry) {
+            // User entered the name of a Place that was not suggested and
+            // pressed the Enter key, or the Place Details request failed.
+            window.alert("No details available for input: '" + place.name + "'");
+            return;
+          }
+          // If the place has a geometry, then present it on a map.
+          if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+          } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);  // Why 17? Because it looks good.
+          }
+          marker.setPosition(place.geometry.location);
+          marker.setVisible(true);
+          var address = '';
+          if (place.address_components) {
+            address = [
+            (place.address_components[0] && place.address_components[0].short_name || ''),
+            (place.address_components[1] && place.address_components[1].short_name || ''),
+            (place.address_components[2] && place.address_components[2].short_name || '')
+            ].join(' ');
+          }
+          infowindowContent.children['place-icon'].src = place.icon;
+          infowindowContent.children['place-name'].textContent = place.name;
+          infowindowContent.children['place-address'].textContent = address;
+          infowindow.open(map, marker);
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_BROWSER_KEY']%>&libraries=places&callback=initMaps"
+      async defer></script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script type="text/javascript">
+const startDate = document.querySelector("#start-day");
+flatpickr(startDate, {
+  dateFormat: "Y-m-d",
+});  // flatpickr
+const endDate = document.querySelector("#end-day");
+flatpickr(endDate, {
+  dateFormat: "Y-m-d",
+});  // flatpickr
+  const startTime = document.querySelector("#start-time");
+flatpickr(startTime, {
+    enableTime: true,
+    noCalendar: true,
+    static: true
+});  // flatpickr
+  const endTime = document.querySelector("#end-time");
+flatpickr(endTime, {
+    enableTime: true,
+    noCalendar: true,
+    static: true
+});  // flatpickr
+</script>
+
+
+

@@ -1,0 +1,95 @@
+<div class="container head-home-container">
+  <div class="row">
+    <div class="hidden-xs col-sm-6 col-md-6 col-lg-6 phones">
+      <img class="iphone-head-home" src="https://www.boostmobile.com/content/dam/boostmobile/en/products/phones/apple/iphone-6/gold/device-front.png">
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <div class="head-home-content">
+        <div class="section-icon">
+          <%= image_tag "logo-down.png", height: '120px', width: 'auto'%>
+        </div>
+        <h1>Stay safe!</h1>
+        <h3>When you go out update your chatbot, not your mum.</h3>
+        <% if !user_signed_in?  %>
+        <div class="butn-fb-home">
+          <%= link_to user_facebook_omniauth_authorize_path, :class => "sign-up-home" do %>
+          <h4>Sign-up with Facebook</h4>
+          <%end %>
+        </div>
+        <p>We'll never post without your approval</p>
+        <% end  %>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="container wraper-two background-color">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-8">
+        <h3>How it works</h3>
+        <section id="one">
+        <div class="hidden-lg hidden-md section-icon">
+          <%= image_tag "Event icon.png"%>
+        </div>
+        <h4>Store your event details</h4>
+        <p>Meeting up with someone and want people to know only if you feel unsafe? Tell your bot where and when you are going, and who you are meeting up with.</p>
+
+        <section id="two">
+        <div class="hidden-lg hidden-md section-icon">
+          <%= image_tag "map.png"%>
+        </div>
+        <h4>Log updates as you go</h4>
+        <p>Keep your bot updated by sharing text, pics and locations during your event.</p>
+        </section>
+
+        <section id="three">
+        <div class="hidden-lg hidden-md section-icon">
+          <%= image_tag "phone-book.png"%>
+        </div>
+        <h4 class="next-row">Alert your contacts if needed</h4>
+        <p>Feel secure knowing that asking your bot for help at any time will send all information about your event to your nominated contact.</p>
+        </section>
+
+      </div>
+      <div class="hidden-xs col-md-4 col-lg-4 vid">
+        <%= video_tag "https://res.cloudinary.com/ebc-industries/video/upload/v1534130774/bot-full-on.mp4", :size => "280x530",:id => "vidhome", :autoplay => true, :muted => true %>
+      </div>
+    </div>
+  </div>
+
+  <% if !user_signed_in?  %>
+  <div class="container wraper-two">
+    <div class="row">
+      <!-- <div class="col-sm-12 col-md-8 col-lg-4"> -->
+        <h3>Be safer now!</h3>
+        <section id="one">
+        <div class="hidden-lg hidden-md section-icon">
+          <%= image_tag "start icon.png"%>
+        </div>
+        <p>Sign up and in just moments you can be dating more safely with OnGuard.  </p>
+        <div class="head-home-content butn-fb-home">
+          <%= link_to user_facebook_omniauth_authorize_path, :class => "sign-up-home" do %>
+          <h4>Sign-up with Facebook</h4>
+          <% end %>
+          <p>We'll never post without your approval</p>
+        </div>
+        </section>
+        <hr>
+      <!-- </div> -->
+    </div>
+  </div>
+  <%end  %>
+
+  <div class="wraper-two">
+    <div class="row">
+        <p id="quotecolour"><i>"I date a LOT, and OnGuard means that I can keep my friends and family informed only if need them!"</i></p>
+        <p id="quotecolour">- Tanguy</p>
+        <%= image_tag "tanguy.png", :class =>"img-circle", height: '120px', width: 'auto'%>
+      <hr>
+    </div>
+  </div>
+
+
+
+
+

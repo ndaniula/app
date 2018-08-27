@@ -1,15 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>onGuard - Stay safe discretely</title>
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <%= action_cable_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+       <%= javascript_pack_tag 'application' %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-
   <body>
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
     <%= yield %>
-  </body>
-</html>
+    <!-- facebook login stuff -->
+ <!--    <% unless current_user %>
+  <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+  <% else %>
+  <%= current_user[:name] %>
+  <% link_to "Logout", destroy_user_session_path, method: :delete %>
+  <% end %> -->
+  <!-- faceboook login stuff -->
+
+<!--   <%# if user_signed_in? && current_user[:phone_number] == nil %>
+
+  <%#= render 'shared/phone_form', user: current_user %>
+
+   <%# else %>
+   <%# link_to root_path %>
+   <%# end %> -->
+
+   <%= render 'shared/footer' %>
+    <%= javascript_include_tag 'application' %>
+    <%# javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
+
+
+ </body>
+ </html>

@@ -1,0 +1,329 @@
+
+<div class="dashboard">
+  <div id="d-wrapper">
+    <div class="zig-zag-wrapper">
+      <div class="zig-zag-bottom" id="welcome">
+        <h2>Welcome, <%= @user.first_name %><%= " " %><%= @user.last_name %></h2>
+      </div>
+      <div class="zig-zag"></div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-6 dashboard-menu">
+      <div class="dashboard-menu-item">
+      <button type="button" id="event-button" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-plus" id="icon" style="color:#0099c7" height="50px"></i></button>
+      <p>Create a new event</p>
+      </div>
+    </div>
+    <div class="col-xs-6 dashboard-menu">
+      <div class="dashboard-menu-item">
+        <%= link_to emergency_path, method: :post, :class=> "help" do %>
+        <i class="fas fa-exclamation-triangle" style="color:#0099c7"></i>
+        <% end %>
+        <p>Notify contacts</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 dashboard-menu">
+      <div class="dashboard-menu-item">
+        <button type="button" class="contact-button" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="fas fa-phone" style="color:#0099c7" height="50px"></i></button>
+        <p>Add emergency contact</p>
+      </div>
+    </div>
+    <div class="col-xs-6 dashboard-menu">
+      <div class="dashboard-menu-item">
+        <%= link_to dashboard_path, :class=> "help" do %>
+        <i class="fab fa-facebook-messenger" style="color:#0099c7"></i>
+        <p class="small-font">Going out for an event?</p>
+        <p>Connect with the facebook chatbot</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="panel-heading" id="headingOne">
+        <h5 class="mb-0">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          EVENTS
+          </a>
+        </h5>
+      </div>
+
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class="event-cards">
+            <% if @events.count >= 1  %>
+              <% @events.each do |event| %>
+
+              <%= link_to event_path(event.slug) do %>
+                <div class="row" id="event-name">
+                  <%= event.name %>
+                </div>
+                <div class="row" id="event-date-time">
+                  <div class="col-xs-2">
+                    <i class="far fa-calendar-alt"></i>
+                  </div>
+                  <div class="col-xs-5">
+                    <%= event.start_date.strftime("%-d/%-m/%y: %k:00") %>
+                  </div>
+                  <div class="col-xs-5">
+                    <%= event.end_date.strftime("%-d/%-m/%y: %k:00") %>
+                  </div>
+                </div>
+                <div class="row" id="event-description">
+                  <%= event.description %>
+                </div>
+                <div class="row" id="event-contacts">
+                  <p>Contacts to notify:</p>
+                  <%= event.emergency_contacts.pluck(:first_name).join(", ") %>
+                </div>
+                <div class="row" id="event-location">
+                  <div class="col-xs-1">
+                    <i class="fas fa-map-pin" height="15px"></i>
+                  </div>
+
+                  <div class="col-xs-11">
+                    <%= event.location %>
+                  </div>
+                </div>
+                <div class="row">
+                 <img src="https://maps.googleapis.com/maps/api/staticmap?&zoom=13&size=600x310&maptype=roadmap&markers=color:blue%7Clabel:S%7C<%= event.latitude %>,<%= event.longitude %>&key=<%= ENV['GOOGLE_STATIC_MAP_KEY'] %>" class="show-map">
+                  </div>
+                </div>
+              <% end %>
+              <% end %>
+            <% else %>
+              <div class="no-events">You have no events to display</div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="panel-heading" id="headingTwo">
+        <h5 class="mb-0">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          EMERGENCY CONTACTS
+          </a>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          <% @emergency_contacts.each do |emergency_contact| %>
+          <div class="row" id="emerg-contact-row">
+            <div class="col-xs-5">
+              <%= emergency_contact.first_name %>
+              <%= emergency_contact.last_name %>
+            </div>
+            <div id="phone-icon" class="col-xs-5">
+              <i class="fas fa-phone"></i>
+              <%= emergency_contact.phone_number %>
+            </div>
+            <div class="col-xs-2">
+              <%= link_to emergency_contact_path(emergency_contact),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } do %>
+              <i class="far fa-trash-alt"></i>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="panel-heading" id="headingThree">
+        <h5 class="mb-0">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          CALENDAR
+          </a>
+        </h5>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div class="card-body">
+          <%= month_calendar do |date| %>
+            <%= date.day %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="header-text">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+         <h4 class="modal-title">Add an Event</h4>
+        </div>
+    </div>
+      <div class="modal-body">
+        <div class="event-form-container">
+        <div class="col-xs-12">
+        <%= simple_form_for @event, url: events_path, method: :post do |f| %>
+        <div class="form-input">
+        <%= f.input :name %>
+          <div class="event-dates-container">
+          <div class="col-xs-6 event-time-1">
+        <label>Event starts:</label>
+        <input name="start_date" class="flatpickr flatpickr-input form-control" placeholder="date" id= "start-day" data-dateFormat="l, F j, Y" value="<%= @event.start_date %> ">
+        <input name="start_time" class="flatpickr form-control" placeholder="time" id="start-time" value="<%= @event.start_date %> " >
+                </div>
+       <div class="col-xs-6 event-time-2">
+       <label>Event ends:</label>
+       <input name="end_date" class="flatpickr flatpickr-input form-control" placeholder="date"id= "end-day" data-dateFormat="l, F j, Y" value="<%= @event.end_date %> ">
+       <input name="end_time" class="flatpickr form-control" placeholder="time" id="end-time" value="<%= @event.end_date %> ">
+     </div>
+   </div>
+        <%= f.input :description %>
+        <%= render 'layouts/autocomplete' , event_location: @event.location %>
+        <%= f.association :emergency_contacts, as: :check_boxes, collection: current_user.emergency_contacts.order(:first_name), value_method: :first_name, label_method: :first_name  %>
+        <%= f.input :active, :as => :hidden %>
+         <div class="col-xs-12"><%= f.submit "Add Event", class: "btn btn-standard big"%></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+         <h4 class="modal-title">Add Emergency Contact</h4>
+      </div>
+      <div class="modal-body">
+         <div class="event-form-container">
+          <div class="col-xs-12">
+        <%= simple_form_for @emergency_contact do |f| %>
+         <div class="form-input">
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :phone_number %>
+          <%= f.submit "Add Contact", class: "btn btn-standard big" %>
+        <% end %>
+         </div>
+       </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script type="text/javascript">
+const startDate = document.querySelector("#start-day");
+flatpickr(startDate, {
+  dateFormat: "Y-m-d",
+});  // flatpickr
+
+const endDate = document.querySelector("#end-day");
+flatpickr(endDate, {
+  dateFormat: "Y-m-d",
+});  // flatpickr
+  const startTime = document.querySelector("#start-time");
+flatpickr(startTime, {
+    enableTime: true,
+    noCalendar: true,
+    static: true
+});  // flatpickr
+  const endTime = document.querySelector("#end-time");
+flatpickr(endTime, {
+    enableTime: true,
+    noCalendar: true,
+    static: true
+});  // flatpickr
+</script>
+<script>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('mymap'), {
+      center: {lat: -33.8688, lng: 151.2195},
+      zoom: 13
+    });
+    var card = document.getElementById('pac-card');
+    var input = document.getElementById('pac-input');
+    // var types = document.getElementById('type-selector');
+    // console.log(types)
+    var strictBounds = document.getElementById('strict-bounds-selector');
+
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+
+    var autocomplete = new google.maps.places.Autocomplete(input);
+
+        // Bind the map's bounds (viewport) property to the autocomplete object,
+        // so that the autocomplete requests use the current map bounds for the
+        // bounds option in the request.
+        autocomplete.bindTo('bounds', map);
+
+        // Set the data fields to return when the user selects a place.
+        autocomplete.setFields(
+          ['address_components', 'geometry', 'icon', 'name']);
+
+        var infowindow = new google.maps.InfoWindow();
+        var infowindowContent = document.getElementById('infowindow-content');
+        infowindow.setContent(infowindowContent);
+        var marker = new google.maps.Marker({
+          map: map,
+          anchorPoint: new google.maps.Point(0, -29)
+        });
+
+        autocomplete.addListener('place_changed', function() {
+          infowindow.close();
+          marker.setVisible(false);
+          var place = autocomplete.getPlace();
+          if (!place.geometry) {
+            // User entered the name of a Place that was not suggested and
+            // pressed the Enter key, or the Place Details request failed.
+            window.alert("No details available for input: '" + place.name + "'");
+            return;
+          }
+
+          // If the place has a geometry, then present it on a map.
+          if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+          } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);  // Why 17? Because it looks good.
+          }
+          marker.setPosition(place.geometry.location);
+          marker.setVisible(true);
+
+          var address = '';
+          if (place.address_components) {
+            address = [
+            (place.address_components[0] && place.address_components[0].short_name || ''),
+            (place.address_components[1] && place.address_components[1].short_name || ''),
+            (place.address_components[2] && place.address_components[2].short_name || '')
+            ].join(' ');
+          }
+
+          infowindowContent.children['place-icon'].src = place.icon;
+          infowindowContent.children['place-name'].textContent = place.name;
+          infowindowContent.children['place-address'].textContent = address;
+          infowindow.open(map, marker);
+        });
+
+
+      }
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>&libraries=places&callback=initMap"
+      async defer></script>
+
+

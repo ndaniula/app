@@ -1,0 +1,17 @@
+<h1>EmergencyContacts#index</h1>
+<p>Find me in app/views/emergency_contacts/index.html.erb</p>
+
+<% @emergency_contacts.each do |emergencycontact| %>
+<%= emergency_contact.first_name %>
+<%= emergency_contact.last_name %>
+<%= emergency_contact.phone_number %>
+<%= link_to 'show', emergency_contact_path(emergency_contact.id) %>
+<%= link_to 'edit', edit_emergency_contact_path(emergency_contact.id) %>
+<%= link_to 'Destroy',  emergency_contact_path(emergency_contact.id), method: :delete %>
+<%end %>
+
+
+<h4>add 1 emrcontact</h4>
+
+<%= link_to 'add', new_emergency_contact_path %>
+

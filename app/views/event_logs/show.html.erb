@@ -1,0 +1,14 @@
+<h1>EventLogs#show</h1>
+<p>Find me in app/views/event_logs/show.html.erb</p>
+<table class="event-log-table">
+<tr>
+  <th> Date </th>
+  <th> Details </th>
+  <th> Attachments</th>
+</tr>
+<tr>
+<td><%= @event_log.date_time %></td>
+<td><%= @event_log.description %></td>
+<td><%= @event_log.attachment %></td>
+</tr>
+</table>

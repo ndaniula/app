@@ -1,0 +1,142 @@
+.event-form-container {
+
+  display: flex;
+  font-weight: lighter;
+  min-width: 300px;
+  label {
+    font-weight: normal;
+  }
+}
+
+input {
+  border-radius: 10px;
+  margin: auto;
+}
+
+.event-dates {
+  width: 50%;
+
+  p {
+    margin: 0;
+  }
+
+  .time {
+    font-size: 32px;
+  }
+
+  .date {
+    font-size: 22px;
+    opacity: 0.5;
+  }
+  .event-details {
+    font-size: 14px;
+    font-weight: 300;
+  }
+}
+.btn-standard {
+  display: flex;
+  margin: 0 auto;
+}
+button.close {
+  position: absolute;
+  right: 20px;
+  margin: 0 !important;
+}
+
+
+
+
+
+.event-time-1 {
+  padding-right: 15px;
+  padding-left: 0;
+}
+.event-time-2 {
+  padding-left: 15px;
+  padding-right: 0;
+}
+
+
+  .form-group {
+    margin-top: 15px;
+  }
+
+  #mymap {
+    height: 230px;
+    width: 362px;
+    margin-top: 10px;
+  }
+
+  #description {
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  #infowindow-content .title {
+    font-weight: bold;
+  }
+
+  #infowindow-content {
+    display: none;
+  }
+
+  #map #infowindow-content {
+    display: inline;
+  }
+
+  .pac-card {
+    margin: 10px 10px 0 0;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    font-family: Roboto;
+  }
+
+
+
+  .pac-container {
+    padding-bottom: 12px;
+    margin-right: 12px;
+    z-index: 2000 !important;
+  }
+
+  .pac-controls {
+    display: inline-block;
+    padding: 5px 11px;
+  }
+
+  .pac-controls label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+  }
+
+  #pac-input {
+    background-color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+    text-overflow: ellipsis;
+
+    width: 363px;
+
+    margin-left: 0 !important;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    height: 39px;
+
+  }
+
+  #pac-input:focus {
+    border-color: #4d90fe;
+  }
+
+
+
+

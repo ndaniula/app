@@ -1,0 +1,482 @@
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: white;         /* adjust as needed */
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+
+.panel-heading {
+  border-bottom: none;
+}
+#event-button {
+  border: none;
+}
+.contact-button {
+  border:none;
+}
+
+.card-user {
+  /* position: absolute; */
+  width: 75px;
+  border-radius: 50%;
+  /* left: 110px; */
+  /* top: 100px; */
+  margin-left: 15px;
+}
+#welcome {
+  margin-left: 0px;
+  margin-right: 0px;
+  text-align: center;
+  background-color: #0098c4;
+  color: white;
+  h2 {
+    font-size: 25px;
+    font-weight: lighter;
+  }
+}
+button.close {
+  position: absolute;
+  right: 20px;
+  margin: 0 !important;
+}
+.dashboard-menu {
+  height: 30vh;
+  text-align: center;
+  font-size: 20px;
+  background-color: white;
+  color: #0098c4;
+  border-left: 1px solid #c0c0c0;
+  border-right: 1px solid #c0c0c0;
+  border-bottom: 1px solid #c0c0c0;
+  display:  flex;
+  justify-content:  center;
+  align-items:  center;
+}
+.dashboard-menu-item {
+  display:  flex;
+  flex-direction:  column;
+  i {
+    font-size: 80px;
+    padding-bottom: 10px;
+    color:#0099c7;
+  }
+}
+
+.help {
+  font-size: 20px;
+  color: #0099c7;
+  text-decoration: none !important;
+}
+.small-font {
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+.zig-zag-wrapper {
+  background: white;
+}
+
+.zig-zag {
+  background: linear-gradient(-45deg, transparent 16px, #0098c4 0), linear-gradient(45deg, transparent 16px, #0098c4 0);
+  background-repeat: repeat-x;
+  background-position: left bottom;
+  background-size: 22px 32px;
+  width: 100%;
+  height: 32px;
+  position: relative;
+  margin: 0;
+}
+
+.zig-zag-bottom {
+  padding: 1px 0;
+  margin: 32px 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  background: #0098c4;
+  color: white;
+}
+
+.card {
+  border-bottom: 1px solid #c0c0c0;
+}
+.panel-heading {
+  background-color: #0098c4;
+  color:white;
+  text-align: center;
+  padding: 10px;
+  font-weight: lighter;
+  a {
+    margin: 0px;
+    color: white;
+  }
+}
+#emerg-contact-row {
+  text-align: center;
+  margin-left: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #c0c0c0;
+  font-weight: lighter;
+  font-color: c6c4c4 !important;
+}
+.row {
+  margin: 0px;
+  color: black;
+}
+.no-events {
+  text-align: center;
+  padding: 5px;
+  font-weight: lighter;
+  opacity: 0.6;
+}
+.btn-link {
+    color: white;
+    font-weight: normal;
+    border-radius: 0;
+}
+btn-link:hover, .btn-link:focus {
+    color: white;
+    text-decoration: underline;
+    background-color: transparent;
+}
+#event-name {
+  font-size: 25px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#event-date-time {
+  display: flex;
+  text-align: center;
+  background-color: #f2f2f2;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  i {
+    font-size: 30px;
+  }
+}
+#event-contacts {
+  display: flex;
+  background-color: #f2f2f2;
+  font-size: 16px;
+  font-weight: lighter;
+  padding-left: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  justify-content: center;
+  p {
+    margin-right: 15px;
+  }
+}
+#event-description {
+  margin-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-weight: lighter;
+}
+#event-location {
+  margin-left: 10px;
+  padding-top: 10px;
+  font-size: 16px;
+  font-weight: lighter;
+  padding-bottom: 10px;
+  i {
+    font-size: 30px;
+  }
+}
+// #dashboard-header {
+//   padding: 100px;
+//   background-color: black;
+// }
+// .banner {
+//   color: white;
+//   // text-align: center;
+//   height: 40vh;
+//   /* ifžyou have a 70px navbar => height: calc(100vh - 70px); */
+//   background-size: cover !important;
+//   display: flex;
+//   align-items: center;
+//   // justify-content: center;
+//   background-position: center;
+// }
+// .banner-content {
+//   margin-left: 130px;
+// }
+// .banner h1 {
+//   font-size: 50px;
+//   // font-weight: bold;
+//   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+//   letter-spacing: 2px;
+// }
+// .banner p {
+//   font-size: 25px;
+//   font-weight: lighter;
+//   color: rgb(255, 255, 255);
+//   opacity: 0.6;
+//   margin-bottom: 30px;
+//   letter-spacing: 2px;
+// }
+// .dashboard-messenger {
+//   margin-bottom: 50px;
+//   margin-right: 50px;
+//   background-color: #f4f4f4;
+//   padding-top: 5px;
+//   padding-bottom: 5px;
+//   padding-left: 20px;
+//   padding-right: 20px;
+// }
+// .dashboard-messenger-desc {
+//   display: flex;
+//     .img {
+//       height: 100px;
+//     }
+// }
+// .fab {
+//   height: 50px;
+//   width: 50px;
+// }
+
+// .no-events {
+//   text-align: center;
+//   font-size: 30px;
+//   margin-top: 50px;
+//   font-weight: lighter;
+//   opacity: 0.6;
+//   background-color: none !important;
+// }
+
+// .dashboard-container {
+//   display: grid;
+//   min-height: 100vh;
+//   background-color: white;
+//   margin: auto;
+//   width: 90%;
+//   // padding-top: 20px;
+//   margin-top: 70px;
+// }
+
+// .emergency {
+//   // border: 1px solid black;
+//   // height: 200px;
+//   margin-right: 50px;
+//   margin-top: 20px;
+//   margin-bottom: 50px;
+//   // background-color: #f4f4f4;
+//   text-align: center;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+// .emergency-contact-list {
+//   // border: 1px solid black;
+//   // height: 400px;
+//   margin-right: 50px;
+//   margin-top: 20px;
+//   // background-color: #f4f4f4;
+//   text-align: center;
+//   margin-bottom: 50px;
+// }
+// .emergency-contacts-title {
+//   font-size: 20px;
+//   font-weight: 600px;
+//   padding: 20px;
+//   background-color: #ffffe3;
+//   margin-top: 1px;
+//   display: flex;
+// }
+// #emerg-contact-row {
+//   height: 50px;
+//   border-bottom: black;
+//   font-weight: lighter;
+//   justify-content: center;
+//   align-items: center;
+//   display: flex;
+//   border-bottom: 1px solid #f4f4f4;
+//   border-left: 1px solid #f4f4f4;
+//   border-right: 1px solid #f4f4f4;
+
+//     i {
+//       margin-left: 40px;
+//       margin-right: 10px;
+//     }
+// }
+// .notice {
+//   font-size: 20px;
+//   font-weight: 800;
+// }
+// .notice-info {
+//   font-size: 15px;
+// }
+
+// #event-button {
+//   position: absolute;
+//     bottom: 70px;
+//     left: 70px;
+//     text-align: center;
+//     padding-left: 40px;
+//     padding-right: 40px;
+//     /* margin-right: 40px; */
+//     /* margin-left: 40px; */
+//     background-color: #1d97c1;
+//     color: white;
+//     border-radius: 5px;
+//     box-shadow: 0 1px 2px rgba(38, 38, 38, 0.15);
+//     h4 {
+//       font-size: 20px;
+//     }
+// }
+// .contact-button {
+//   background-color: #1d97c1;
+//   color: white;
+//   width: 50px;
+//   height: 50px;
+//   border-radius: 5px;
+//   position: absolute;
+//   right: 100px;
+// }
+// .emerg-button {
+//   display: flex;
+//   background-color: #f95e5e;
+//   width: 300px;
+//   height: 50px;
+//   border-radius: 5px;
+//   justify-content: center;
+//   align-items: center;
+//   margin-bottom: 20px;
+// }
+// #phone-icon {
+//   display: flex;
+// }
+// .help {
+//   color: white;
+// }
+// .card {
+//   height: 500px;
+//   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+//   color: white;
+//   position: relative;
+//   background-color: #f4f4f4;
+//   width: 90%;
+//   margin-top: 80px;
+//   margin-left: 50px;
+// }
+// .card2 {
+//   height: 300px;
+//   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+//   color: white;
+//   position: relative;
+//   background-color: #f4f4f4;
+//   width: 90%;
+//   margin-top: 80px;
+// }
+// .calendar {
+//   height: 300px;
+//   width: 90%;
+// }
+
+// .card-description {
+//   position: absolute;
+//   bottom: 130px;
+//   left: 65px;
+//   color: black;
+//   font-size: 150px;
+// }
+// .card-description h2 {
+//   font-size: 24px;
+// }
+// .card-description p {
+//   font-size: 14px;
+//   opacity: 0.7;
+//   font-weight: lighter;
+// }
+// #ecn {
+//   text-align: center;
+// }
+// .event-title {
+//   font-size: 30px;
+//   letter-spacing: 1px;
+//   font-weight: lighter;
+//   padding-bottom: 15px;
+//   border-bottom: 1px solid rgb(191, 187, 187);
+//   margin-top: 0px;
+//   text-align: center;
+//   padding-top: 10px;
+//   background-color: #ffffe3;
+// }
+
+// .event-cards {
+//   background-color: #f4f4f4;
+//   width: 90%;
+//   margin-top: 30px;
+//   margin-left: 50px;
+//   margin-bottom: 30px;
+//   align-items: center;
+// }
+// .event-card {
+//   display: flex;
+//   align-items: center;
+//   color: black;
+//   border-bottom: 1px solid rgb(191, 187, 187);
+//   padding: 10px;
+// }
+// .event-card-name {
+//   font-size: 20px
+// }
+// .event-card-start-time {
+//   font-size: 15px;
+//   font-weight: lighter;
+//   display: flex;
+// }
+// .event-card-end-time {
+//   font-size: 15px;
+//   font-weight: lighter;
+//   display: flex;
+// }
+// .event-card-description {
+//   font-size: 15px;
+//   margin-top: 20px;
+//   margin-bottom: 20px;
+//   flex-grow: 1;
+//   font-weight: lighter;
+// }
+// .event-card-location {
+//   margin-left: 20px;
+//   margin-right: 20px;
+//   font-size: 15px;
+//   text-align: center;
+// }
+// .event-card-emerg {
+//   display: flex;
+//   justify-content: center;
+//     p { margin-right: 10px;
+//     }
+// }
+// .event-map {
+//   height: 150px;
+// }
+// .dashboard-map {
+//   position: absolute;
+//   // top: 10px;
+//   width: 100px;
+//   border-radius: 50%;
+// }
+// .avatar-large {
+//   width: 50%;
+//   border-radius: 50%;
+// }
+// .card-link {
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   right: 0;
+//   width: 100%;
+//   z-index: 2;
+//   background: black;
+//   opacity: 0;
+//   }

@@ -1,0 +1,262 @@
+body {
+  background-color: white;
+}
+
+h1, h3 {
+  color: #1d97c1;
+}
+
+.img-circle {
+    border-radius: 50%;
+    margin: 0 auto;
+    width: 120px;
+    height: 120px;
+    display: block;
+}
+
+.head-home-container {
+  margin-top: 20px;
+  // padding-bottom: 40px;
+  // box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+}
+
+.iphone-head-home {
+  width: 380px;
+  float: right;
+
+}
+
+.phones {
+  background-image: url(https://www.android.com/static/2016/img/devices/phones/pixel-2/front-black-xl_1x.png);
+  background-repeat: no-repeat;
+}
+
+.head-home-content {
+  margin-top: 10px;
+}
+
+.head-home-content h1 {
+  font-size: 40px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.head-home-content h3 {
+  color: grey;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.head-home-content p {
+  color: lightgrey;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.section-icon {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.wraper-one {
+  margin-top: 100px;
+  background-color: #e2e2e2;
+  // background-color: rgb(0, 125, 210);
+  background-size: 100%;
+  width: 100vw;
+  color: white;
+}
+
+.wraper-one h3, .wraper-one p {
+  margin-left: 100px;
+}
+
+.wraper-one h3 {
+  margin-top: 40px;
+  font-size: 35px;
+}
+
+.bot-img-home {
+  width: 180px;
+  float: right;
+  margin-right: 204px;
+}
+
+.wraper-two {
+  margin-top: 40px;
+  width: 100vw;
+  // padding-bottom: 30px;
+  // box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+}
+
+.wraper-two h3, .wraper-two h4, .wraper-two p, .wraper-two a {
+  text-align: center;
+}
+
+.wraper-two h3 {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.wraper-two h4 {
+  font-size: 20px;
+  color: grey;
+}
+.wraper-two p {
+  color: rgb(160, 167, 174);
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  font-weight: lighter;
+}
+
+.wraper-two h6 {
+  margin-top: 170px;
+  color: white;
+}
+
+.next-row {
+
+}
+
+.vid {
+  position: sticky;
+  top: 70px;
+}
+
+.wraper-two section {
+  margin: 5px 0;
+  // padding: 150px 0;
+}
+
+.butn-fb-home h4 {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-right: 40px;
+  margin-left: 40px;
+  background-color: #1d97c1;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(38,38,38,.15);
+
+
+}
+
+@media (max-width: 768px) {
+  .iphone-head-home {
+  float: none;
+  width: 100%;
+  }
+}
+
+@media (max-width: 2400px) {
+.butn-fb-home h4 {
+  width: 340px;
+  margin: 0 auto;
+}
+}
+
+@media (max-width: 1200px) {
+  .head-home-content h1 {
+  font-size: 48px;
+}
+}
+
+@media (max-width: 991px) {
+  .head-home-content h1 {
+  font-size: 30px;
+}
+}
+
+@media (max-width: 991px) {
+  .head-home-content h3 {
+  font-size: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+}
+
+@media (max-width: 991px) {
+  .head-home-content h4 {
+  font-size: 15px;
+}
+}
+
+@media (max-width: 767px) {
+  .head-home-content {
+  margin-top: 0px;
+}
+}
+
+
+@media (max-width: 767px) {
+  .background-color {
+  background-color: #1d97c1;
+}
+}
+
+@media (max-width: 767px) {
+  .background-color p, .background-color h3, .background-color h4 {
+  color: #ffffff;
+}
+}
+
+@media (max-width: 767px) {
+  .butn-fb-home h4 {
+  // margin-right: 30%;
+  // margin-left: 30%;
+  width: 75%;
+  margin: 0 auto;
+}
+}
+
+@media (max-width: 636px) {
+  .butn-fb-home h4 {
+  margin-right: 20%;
+  margin-left: 20%;
+}
+}
+
+@media (max-width: 434px) {
+  .butn-fb-home h4 {
+  margin-right: 10%;
+  margin-left: 10%;
+}
+}
+
+@media (max-width: 991px) {
+ .wraper-one p {
+  margin-bottom: 50px;
+ }
+}
+
+@media (max-width: 767px) {
+  .wraper-one h3, .wraper-one p {
+  // margin-left: 30px;
+}
+}
+
+@media (max-width: 767px) {
+  .wraper-two h3, .wraper-two p, .wraper-two a {
+  // margin-left: 30px;
+}
+}
+
+#quotecolour {
+    color: #1d97c1;
+}
+
+#whitefont {
+
+}
+
+
+
+
+

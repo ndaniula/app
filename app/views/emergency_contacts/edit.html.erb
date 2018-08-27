@@ -1,0 +1,11 @@
+<h1>EmergencyContacts#edit</h1>
+<p>Find me in app/views/emergency_contacts/edit.html.erb</p>
+
+<h1>HEY</h1>
+
+<%= simple_form_for (@emergency_contact) do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :phone_number %>
+  <%= f.button :submit %>
+<% end %>
